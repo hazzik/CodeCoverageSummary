@@ -99,6 +99,12 @@ namespace CodeCoverageSummary
                                              }
 
                                              // output
+                                             var githubSummaryFile = Environment.GetEnvironmentVariable("GITHUB_STEP_SUMMARY");
+                                             if (!string.IsNullOrEmpty(githubSummaryFile))
+                                             {
+                                                 File.AppendAllText(githubSummaryFile, output);
+                                             }
+
                                              if (o.Output.Equals("console", StringComparison.OrdinalIgnoreCase))
                                              {
                                                  Console.WriteLine();
